@@ -303,7 +303,7 @@ function getShortMeaning(fullMeaning) {
     .replace(/(,\/)/g, "/")
     .replace(/(;\/)/g, "/")
   let shortMeaningDividedBySlash=shortMeaning.split("/")
-  let filtered1 = shortMeaningDividedBySlash.filter(m => /[ぁ-んァ-ヶ一-龠々ー]/.test(m));
+  let filtered1 = shortMeaningDividedBySlash.filter(m => /[ぁ-んァ-ヶ一-龠々ーa-zA-Z ]/.test(m));
   shortMeaning=filtered1.join("/")
   return shortMeaning;
 }
