@@ -282,7 +282,9 @@ function getShortMeaning(fullMeaning) {
   console.log("getShortMeaning_1:", shortMeaning);
   if (shortMeaning.includes("『")) {//wise→『賢い』,賢明な,思慮分別のある / 『博識な』...などをwise→賢い/博識なにする
     let matches=matchNested(shortMeaning,"『","』").map(m=>m[1]).filter(m => /[ぁ-んァ-ヶ一-龠々ー]/.test(m))
-    shortMeaning = matches.join("/");
+    if (matches.length >0){
+      shortMeaning = matches.join("/");
+    }
   }
   const brackets = [
     ["(", ")"],
