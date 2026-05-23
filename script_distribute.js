@@ -280,8 +280,9 @@ function getShortMeaning(fullMeaning) {
     }
   }
   console.log("getShortMeaning_1:", shortMeaning);
+  let matches =""
   if (shortMeaning.includes("『")) {
-    let matches=matchNested(shortMeaning,"『","』").map(m=>m[1]).join("/")//下の行使うならm[0]
+    matches=matchNested(shortMeaning,"『","』").map(m=>m[1]).join("/")//下の行使うならm[0]
   }
   const brackets = [
     ["(", ")"],
