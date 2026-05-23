@@ -281,9 +281,7 @@ function getShortMeaning(fullMeaning) {
   }
   console.log("getShortMeaning_1:", shortMeaning);
   if (shortMeaning.includes("『")) {
-    //let matches = shortMeaning.match(/『(.*?)』/g);
-    let matches=matchNested(shortMeaning,"『","』").map(m=>m[0])
-    shortMeaning = matches.map((s) => s.replace(/[『』]/g, "")).join("/");
+    let matches=matchNested(shortMeaning,"『","』").map(m=>m[1]).join("/")//下の行使うならm[0]
   }
   const brackets = [
     ["(", ")"],
@@ -294,6 +292,9 @@ function getShortMeaning(fullMeaning) {
   for (const [pre, post] of brackets) {
     shortMeaning = replaceNested(shortMeaning, pre, post);
   }
+  if (matches){
+    shortMeaning = matches + shortMeaning
+  } 
   shortMeaning = shortMeaning
     //.replace(/\(.*?\)/g, "")
     //.replace(/<.*?>/g, "")
@@ -302,6 +303,7 @@ function getShortMeaning(fullMeaning) {
     .replace(/[…\.‘']/g, "")//…とピリオドを削除。ピリオドは特殊文字なので\でエスケープ
     .replace(/(,\/)/g, "/")
     .replace(/(;\/)/g, "/")
+
   let shortMeaningDividedBySlash=shortMeaning.split("/")
   let filtered1 = shortMeaningDividedBySlash.filter(m => /[ぁ-んァ-ヶ一-龠々ーa-zA-Z ]/.test(m));
     console.log("getShortMeaning_1:", filtered1);
