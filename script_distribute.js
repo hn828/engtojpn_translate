@@ -35,14 +35,19 @@ function replaceNested(str,pre,post) {
       if (depth === 0) {//今からかっこの中に入る
         parts1.push(current.trim())
         current = ""
-      depth++;
       }
-    } else if (charactor === post) {//)など
-      if (depth === 1) {//地の文に戻るとき
+      if (depth >=1){//(あい(う)えお)の二個目の（、"あい"は入ってほしくない
+        current = ""
+      }
+      depth++;
+    } 
+    if (charactor === post) {//)など
+      if (depth >= 1) {//地の文に戻るとき
         current = ""//リセット
       }
       depth--;
-    } else if (depth === 0) {  //地の文
+    } 
+    if (depth === 0) {  //地の文
       current += charactor;
     }
   }
@@ -295,7 +300,7 @@ function getShortMeaning(fullMeaning) {
     //.replace(/<.*?>/g, "")
     //.replace(/〈.*?〉/g, "")
     //.replace(/\[.*?\]/g, "")
-    .replace(/[…\.]/g, "")
+    .replace(/[…\.‘']/g, "")//…とピリオドを削除。ピリオドは特殊文字なので\でエスケープ
     .replace(/(,\/)/g, "/")
     .replace(/(;\/)/g, "/")
   let shortMeaningDividedBySlash=shortMeaning.split("/")
