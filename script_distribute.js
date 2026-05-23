@@ -123,7 +123,6 @@ function lookupwords(words, m) {
 function lookupIdiom(words) {
   for (let m = 3; m >= 1; m = m - 1) {
     //for(初期条件;条件;更新){繰り返す処理}
-    let phrase =""
     phrase = words.slice(0, m).join(" ");
     if (words.length >= m) {
       let res = lookupwords(words, m);
