@@ -45,8 +45,10 @@ function replaceNested(str,pre,post) {
         current = ""//リセット
       }
       depth--;
-    } else if (depth === 0) {  //地の文
-      current += charactor;
+    } else {
+      if (depth === 0) {  //地の文
+        current += charactor;
+      }
     }
   }
   if (current.trim()) parts1.push(current.trim());
