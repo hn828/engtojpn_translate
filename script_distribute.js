@@ -40,14 +40,12 @@ function replaceNested(str,pre,post) {
         current = ""
       }
       depth++;
-    } 
-    if (charactor === post) {//)など
+    } else if (charactor === post) {//)など
       if (depth >= 1) {//地の文に戻るとき
         current = ""//リセット
       }
       depth--;
-    } 
-    if (depth === 0) {  //地の文
+    } else if (depth === 0) {  //地の文
       current += charactor;
     }
   }
