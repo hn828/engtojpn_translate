@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>翻訳</title>
+        <style>
+            body{
+                background-color:rgb(240, 240, 240);
+                font-family:sans-serif;
+                font-size: 14px;
+                padding:16px;
+                padding-bottom:40%;
+            }
+            #inputText {
+                background: rgba(0, 0, 0,0.1);
+                border: 1px solid rgb(204, 204, 204);
+                width: 100%;        /* 親幅いっぱいまで広げる */
+                font-size: 14px;
+                margin: 4px auto;     /* 上下余白0、左右自動で均等 */
+                margin-bottom: 4px;
+                display: block;     /* margin: auto を効かせるために必要 */
+                padding: 4px;       /* 内側の余白 */
+                box-sizing: border-box; /* padding を含めて幅を計算 */
+            }       
+            #translationContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            }
+            #translationHistory {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            } 
+            .history-block {
+            padding: 0px;
+            border-radius: 2px;
+            background: rgba(0,0,0,0.1);
+            }
+            .word-block {
+            margin-bottom: 0px;
+            padding-bottom: 4px;
+            }
+            .word-block details {
+            display: inline;
+            padding-left: 4px;
+            
+            }
+            .word-block summary {
+            cursor: pointer;
+            display: inline;
+            }
+            .word-block div {
+            padding-left:15px;
+            margin-top: 0px;
+            } 
+            #savedWords{
+            position:fixed;
+            bottom:0;
+            left:0;
+            right:0;
+            max-height:35%;
+            overflow-y:auto;
+            background:rgb(230,230,230);
+            border-top:1px solid #ccc;
+            padding:8px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <input id="inputText" type="text" placeholder = "検索ワードを入力">
+        <div id="translationText"></div>
+        <div id="translationHistory"></div>
+        <script src="xlsx.full.min.js"></script>
+        <script src="script_distribute.js"></script>
+    </body>
+</html>
