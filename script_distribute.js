@@ -234,7 +234,6 @@ function lookupIdiom2(words) {
 function getShortMeaning(fullMeaning) {
   let shortMeaning = fullMeaning;
   //let shortMeaning = fullMeaning.replace(/《.*?》/g, "");
-  //console.log("getShortMeaning_fullMeaning:", fullMeaning);
   //if ((fullMeaning.match(/\//g) || []).length <= 2) {
     //return shortMeaning;
   //}
@@ -252,6 +251,7 @@ function getShortMeaning(fullMeaning) {
       });
     }
   }
+  
   for (let n = 0; n < idiomMatches.length; n++) {
     //配列idiomMatchesの中身を順に全部処理する
     let idiomMatchesmoji = idiomMatches[n].idiom;
@@ -279,7 +279,7 @@ function getShortMeaning(fullMeaning) {
       shortMeaning = replaceNested(shortMeaning,"《","》");
     }
   }
-
+  console.log("getShortMeaning_1:", shortMeaning);
   if (shortMeaning.includes("『")) {
     //let matches = shortMeaning.match(/『(.*?)』/g);
     let matches=matchNested(shortMeaning,"『","』").map(m=>m[0])
@@ -304,6 +304,7 @@ function getShortMeaning(fullMeaning) {
     .replace(/(;\/)/g, "/")
   let shortMeaningDividedBySlash=shortMeaning.split("/")
   let filtered1 = shortMeaningDividedBySlash.filter(m => /[ぁ-んァ-ヶ一-龠々ーa-zA-Z ]/.test(m));
+    console.log("getShortMeaning_1:", filtered1);
   shortMeaning=filtered1.join("/")
   return shortMeaning;
 }
