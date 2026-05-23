@@ -280,9 +280,9 @@ function getShortMeaning(fullMeaning) {
     }
   }
   console.log("getShortMeaning_1:", shortMeaning);
-  let matches =""
-  if (shortMeaning.includes("『")) {
-    matches=matchNested(shortMeaning,"『","』").map(m=>m[1]).join("/")//下の行使うならm[0]
+  if (shortMeaning.includes("『")) {//wise→『賢い』,賢明な,思慮分別のある / 『博識な』...などをwise→賢い/博識なにする
+    let matches=matchNested(shortMeaning,"『","』").map(m=>m[1]).filter(m => /[ぁ-んァ-ヶ一-龠々ー]/.test(m))
+    shortMeaning = matches.join("/");
   }
   const brackets = [
     ["(", ")"],
@@ -293,9 +293,6 @@ function getShortMeaning(fullMeaning) {
   for (const [pre, post] of brackets) {
     shortMeaning = replaceNested(shortMeaning, pre, post);
   }
-  if (matches){
-    shortMeaning = matches + shortMeaning
-  } 
   shortMeaning = shortMeaning
     //.replace(/\(.*?\)/g, "")
     //.replace(/<.*?>/g, "")
@@ -304,7 +301,6 @@ function getShortMeaning(fullMeaning) {
     .replace(/[…\.‘']/g, "")//…とピリオドを削除。ピリオドは特殊文字なので\でエスケープ
     .replace(/(,\/)/g, "/")
     .replace(/(;\/)/g, "/")
-
   let shortMeaningDividedBySlash=shortMeaning.split("/")
   let filtered1 = shortMeaningDividedBySlash.filter(m => /[ぁ-んァ-ヶ一-龠々ーa-zA-Z ]/.test(m));
     console.log("getShortMeaning_1:", filtered1);
