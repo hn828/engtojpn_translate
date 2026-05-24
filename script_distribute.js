@@ -117,7 +117,7 @@ function lookupwords(words, m) {
       if (commonWords.includes(phrase2)){
         shortedMeaning1=getveryShortMeaning(meaning1)
       }
-      accumulatedMeaning = accumulatedMeaning+ "  ※ " + phrase2 + "→" +  shortedMeaning1;
+      accumulatedMeaning = accumulatedMeaning+ "  ※" + phrase2 + "→" +  shortedMeaning1;
       //accumulatedMeaning = shortedMeaning1 + accumulatedMeaning.replace("="+phrase2,"") 
     }
     let key = words.slice(0, 1).join(); //配列から文字列にしている
