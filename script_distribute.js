@@ -99,10 +99,11 @@ function lookupwords(words, m) {
   phrase = words.slice(0, m).join(" ");
   if (dictionary[phrase]) {
     let meaning1 = dictionary[phrase];
-    let accumulatedMeaning = meaning1; //amer=emirなどほかに飛ばされるときの処理
+    let accumulatedMeaning = meaning1; //amir=emirなどほかに飛ばされるときの処理
     visited.add(phrase);
     while (meaning1.startsWith("=")) {
-      let phrase2 = meaning1.replace(/^\s*=\s*/, "");
+      //let phrase2 = meaning1.replace(/^\s*=\s*/, "");
+      let phrase2 = meaning1.replace(/^=([a-zA-Z]+)/, "$1");
       if (visited.has(phrase2)) {
         break;
       }
