@@ -279,7 +279,7 @@ function getShortMeaning(fullMeaning) {
       shortMeaning = replaceNested(shortMeaning,"《","》");
     }
   }
-  console.log("getShortMeaning_1:", shortMeaning);
+  //console.log("getShortMeaning_1:", shortMeaning);
   if (shortMeaning.includes("『")) {//wise→『賢い』,賢明な,思慮分別のある / 『博識な』...などをwise→賢い/博識なにする
     let matches=matchNested(shortMeaning,"『","』").map(m=>m[1]).filter(m => /[ぁ-んァ-ヶ一-龠々ー]/.test(m))
     if (matches.length >0){
@@ -305,7 +305,7 @@ function getShortMeaning(fullMeaning) {
     .replace(/(;\/)/g, "/")
   let shortMeaningDividedBySlash=shortMeaning.split("/")
   let filtered1 = shortMeaningDividedBySlash.filter(m => /[ぁ-んァ-ヶ一-龠々ーa-zA-Z ]/.test(m));
-    console.log("getShortMeaning_1:", filtered1);
+    //console.log("getShortMeaning_1:", filtered1);
   shortMeaning=filtered1.join("/")
   return shortMeaning;
 }
