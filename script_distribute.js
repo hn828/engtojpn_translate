@@ -102,8 +102,12 @@ function lookupwords(words, m) {
     let accumulatedMeaning = meaning1; //amir=emirなどほかに飛ばされるときの処理
     visited.add(phrase);
     while (meaning1.startsWith("=")) {
+      
       //let phrase2 = meaning1.replace(/^\s*=\s*/, "");
       let phrase2 = meaning1.replace(/^=([a-zA-Z]+)/, "$1");
+      console.log("lookupwords_meaning1=",meaning1)
+      console.log("lookupwords_phrase2=",phrase2)
+
       if (visited.has(phrase2)) {
         break;
       }
