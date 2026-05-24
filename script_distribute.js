@@ -104,7 +104,7 @@ function lookupwords(words, m) {
     while (meaning1.startsWith("=")) {
       
       //let phrase2 = meaning1.replace(/^\s*=\s*/, "");
-      let phrase2 = meaning1.replace(/^=([a-zA-Z]+)/, "$1");
+      let phrase2 = meaning1.replace(/^=([a-zA-Z]+).*/, "$1");
       console.log("lookupwords_meaning1=",meaning1)
       console.log("lookupwords_phrase2=",phrase2)
 
